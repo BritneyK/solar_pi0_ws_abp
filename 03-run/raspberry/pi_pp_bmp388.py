@@ -38,7 +38,7 @@ def encodePayload(pressure,temperature):
     return data
 
 def sendDataTTN(data):
-    lora.set_datarate(SF9BW125)
+    lora.set_datarate("SF12BW125")
     lora.send_data(data, len(data), lora.frame_counter)
     lora.frame_counter += 1
     display.fill(0)

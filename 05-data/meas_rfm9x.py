@@ -6,7 +6,7 @@ import time
 import busio
 from digitalio import DigitalInOut, Direction, Pull
 import board
-from talkpp_py import pp_configs, command, write2pp
+#from talkpp.py import pp_configs, command, write2pp
 
 # import the RFM9x radio module.
 import adafruit_rfm9x
@@ -65,5 +65,5 @@ while BATT > 3.05:
     time.sleep(300)
 
 file = open('power_info.txt', 'w')
-print(%itr)
+print("Number of Iteration = " % ITR)
 file.close()
