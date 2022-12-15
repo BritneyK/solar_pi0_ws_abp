@@ -3,8 +3,9 @@
 # Pi Platter board wakes up Pi zero, then Pi zero takes measurements and send to TTN application. Once it's done, Pi Platter board shutdown Pi zero
 # version 1.0 - 23/11/21
 # version 1.2 - 26/09/22 (ß)
+# britney: deleted code to get rid of OLED display-code - 15/12/22
 
-import adafruit_ssd1306, adafruit_bmp3xx, board, busio, time
+import adafruit_bmp3xx, board, busio, time
 from digitalio import DigitalInOut, Direction, Pull
 from adafruit_tinylora.adafruit_tinylora import TTN, TinyLoRa
 from time import sleep
@@ -65,9 +66,6 @@ lora = TinyLoRa(spi, cs, irq, rst, ttn_config)
 # create the i2c interface
 i2c = board.I2C()   # uses board.SCL and board.SDA
  
-# 128x32 OLED display
-reset_pin = DigitalInOut(board.D4)
-display = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c, reset=reset_pin)
 
 # create library object using our Bus I2C port
 bmp = adafruit_bmp3xx.BMP3XX_I2C(i2c)
@@ -89,11 +87,6 @@ btnC = DigitalInOut(board.D12) # button C
 btnC.direction = Direction.INPUT
 btnC.pull = Pull.UP
 
-# clear the display.
-display.fill(0)
-display.show()
-width = display.width
-height = display.height
 
 # 5b array to store sensor data
 data = bytearray(5)
