@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # measurement of rfm9x chipset radio
 # version 1.0 - 29/11/22
-# britney: deleted OLED and buttons not used - 14/12/22
+
 
 import time
 import busio
