@@ -34,7 +34,15 @@ btnC.pull = Pull.UP
 # create the I2C interface.
 i2c = busio.I2C(board.SCL, board.SDA)
 
+# 128x32 OLED Display
+reset_pin = DigitalInOut(board.D4)
+display = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c, reset=reset_pin)
 
+# clear the display.
+display.fill(0)
+display.show()
+width = display.width
+height = display.height
 
 # configure RFM9x LoRa Radio
 CS = DigitalInOut(board.CE1)
@@ -67,6 +75,22 @@ while True:
     rfm9x.send(bytes("Hello World!\r\n","utf-8"))
     print("Sent Hello World message!")
 
+    # check buttons
+    if not btnA.value:
+        # button A pressed
+        display.text('Ada', width-85, height-7, 1)
+        display.show()
+        time.sleep(0.1)
+    if not btnB.value:
+        # button B pressed
+        display.text('Fruit', width-75, height-7, 1)
+        display.show()
+        time.sleep(0.1)
+    if not btnC.value:
+        # button C pressed
+        display.text('Radio', width-65, height-7, 1)
+        display.show()
+        time.sleep(0.1)
 
     display.show()
     time.sleep(0.1)
