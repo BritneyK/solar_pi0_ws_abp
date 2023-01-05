@@ -1,5 +1,6 @@
 #! /usr/bin/bash
 # first script test to measure baterry discharge time
+# 2022/12/14 changed the way it logs
 
 echo " beginning of script "
 
