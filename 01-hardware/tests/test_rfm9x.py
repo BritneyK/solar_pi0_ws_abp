@@ -4,7 +4,7 @@
 # version 1.1 - 20/07/22 (add a send packet code)
 # version 1.2 - 22//07/22 (add RFM9x configurations for tests)
 # version 1.3 - 28/11/22 (comment "Sent Hello World message!" line)
-# britney: 14/12/22 deleted OLED and the buttons that were not used
+
 
 import time
 import busio
